@@ -310,6 +310,81 @@
     max-width: 44ch;
 }
 
+/* Color picker */
+.pcard__colors {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    margin-top: var(--s-2);
+}
+
+.pcard__colors-head {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    font-size: 10px;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    font-weight: 700;
+}
+
+.pcard__colors-label {
+    color: var(--muted);
+}
+
+.pcard__colors-active {
+    color: var(--ink);
+}
+
+.pcard__colors-row {
+    display: inline-flex;
+    gap: 10px;
+    flex-wrap: wrap;
+}
+
+.pcard__color {
+    width: 34px;
+    height: 34px;
+    padding: 3px;
+    border-radius: 50%;
+    border: 1.5px solid var(--line);
+    background: var(--bg-raised);
+    cursor: pointer;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    transition:
+        border-color 260ms cubic-bezier(0.16, 1, 0.3, 1),
+        transform 260ms cubic-bezier(0.16, 1, 0.3, 1),
+        box-shadow 260ms cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.pcard__color-dot {
+    display: block;
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
+    box-shadow: inset 0 0 0 1px rgba(13, 13, 13, 0.08);
+}
+
+.pcard__color:hover {
+    transform: scale(1.1);
+    border-color: var(--line-strong);
+}
+
+.pcard__color.is-active {
+    border-color: var(--ink);
+    transform: scale(1.08);
+    box-shadow: 0 6px 14px -6px rgba(13, 13, 13, 0.35);
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .pcard__color {
+        transition: none !important;
+        transform: none !important;
+    }
+}
+
 .pcard__specs {
     display: grid;
     grid-template-columns: repeat(2, 1fr);

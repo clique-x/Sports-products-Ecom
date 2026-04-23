@@ -19,6 +19,7 @@ const fadeUp = {
 
 const ProductCard = ({ product, index, reverse = false }) => {
     const [zoomed, setZoomed] = useState(false)
+    const [colorIdx, setColorIdx] = useState(0)
     const { ref: tiltRef, handlers, tilt, parallax, spotlight } = useCursorTilt({
         maxTilt: 3.5,
         maxParallax: 10,
@@ -47,7 +48,9 @@ const ProductCard = ({ product, index, reverse = false }) => {
     const spotlightPos = useMotionTemplate`${spotlight.x} ${spotlight.y}`
 
     const indexLabel = String(index + 1).padStart(2, '0')
-    const landscape = product.image || product.heroImage?.landscape
+    const colors = product.colors || []
+    const activeColor = colors[colorIdx]
+    const landscape = activeColor?.image || product.image || product.heroImage?.landscape
     const accent = reverse ? 'var(--sky-deep)' : 'var(--orange)'
 
     const specs = [
@@ -81,13 +84,20 @@ const ProductCard = ({ product, index, reverse = false }) => {
                 transition={{ duration: 1.15, ease: EASE }}
             >
                 <div className="pcard__img-wrap">
-                    <img
-                        src={landscape}
-                        alt={`${product.name} — ${product.category}`}
-                        className="pcard__img"
-                        loading={index === 0 ? 'eager' : 'lazy'}
-                        decoding="async"
-                    />
+                    <AnimatePresence mode="sync">
+                        <motion.img
+                            key={landscape}
+                            src={landscape}
+                            alt={`${product.name}${activeColor ? ' — ' + activeColor.name : ''}`}
+                            className="pcard__img"
+                            loading={index === 0 ? 'eager' : 'lazy'}
+                            decoding="async"
+                            initial={{ opacity: 0, scale: 1.03 }}
+                            animate={{ opacity: 1, scale: 1 }}
+                            exit={{ opacity: 0 }}
+                            transition={{ duration: 0.42, ease: EASE }}
+                        />
+                    </AnimatePresence>
                 </div>
 
                 <div className="pcard__vignette" aria-hidden="true" />
@@ -191,6 +201,35 @@ const ProductCard = ({ product, index, reverse = false }) => {
                 <motion.p className="pcard__desc" variants={fadeUp}>
                     {product.description}
                 </motion.p>
+
+                {colors.length > 0 && (
+                    <motion.div className="pcard__colors" variants={fadeUp}>
+                        <div className="pcard__colors-head">
+                            <span className="pcard__colors-label">Colourways</span>
+                            <span className="pcard__colors-active">
+                                {activeColor?.name}
+                            </span>
+                        </div>
+                        <div className="pcard__colors-row">
+                            {colors.map((c, i) => (
+                                <button
+                                    key={c.name}
+                                    type="button"
+                                    className={`pcard__color ${colorIdx === i ? 'is-active' : ''}`}
+                                    onClick={() => setColorIdx(i)}
+                                    aria-label={c.name}
+                                    aria-pressed={colorIdx === i}
+                                    title={c.name}
+                                >
+                                    <span
+                                        className="pcard__color-dot"
+                                        style={{ background: c.swatch }}
+                                    />
+                                </button>
+                            ))}
+                        </div>
+                    </motion.div>
+                )}
 
                 <motion.ul className="pcard__specs" variants={fadeUp}>
                     {specs.map((s) => (

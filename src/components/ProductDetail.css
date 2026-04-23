@@ -194,6 +194,122 @@
     gap: 8px;
 }
 
+.pd__colors {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    padding-top: var(--s-2);
+}
+
+.pd__colors-head {
+    display: flex;
+    align-items: baseline;
+    gap: 10px;
+}
+
+.pd__colors-label {
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--muted);
+}
+
+.pd__colors-value {
+    font-size: 14px;
+    font-weight: 700;
+    color: var(--ink);
+}
+
+/* Color cards — selectable pills with swatch + name */
+.pd__color-cards {
+    display: flex;
+    gap: 10px;
+    flex-wrap: wrap;
+}
+
+.pd__color-card {
+    position: relative;
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    padding: 10px 18px 10px 10px;
+    border-radius: 999px;
+    background: var(--bg-raised, #fff);
+    border: 1.5px solid var(--line);
+    cursor: pointer;
+    color: var(--ink);
+    font-size: 13px;
+    font-weight: 700;
+    letter-spacing: 0.02em;
+    transition:
+        border-color 360ms cubic-bezier(0.16, 1, 0.3, 1),
+        transform 360ms cubic-bezier(0.16, 1, 0.3, 1),
+        box-shadow 360ms cubic-bezier(0.16, 1, 0.3, 1),
+        background 260ms ease;
+    will-change: transform;
+}
+
+.pd__color-card-dot {
+    width: 22px;
+    height: 22px;
+    border-radius: 50%;
+    background: var(--swatch, var(--ink));
+    box-shadow:
+        inset 0 0 0 1px rgba(0, 0, 0, 0.08),
+        0 1px 2px rgba(0, 0, 0, 0.12);
+    flex-shrink: 0;
+}
+
+.pd__color-card-name {
+    white-space: nowrap;
+}
+
+.pd__color-card-check {
+    position: absolute;
+    top: -6px;
+    right: -6px;
+    width: 22px;
+    height: 22px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    background: var(--ink);
+    color: #fff;
+    opacity: 0;
+    transform: scale(0.6);
+    transition:
+        opacity 280ms cubic-bezier(0.16, 1, 0.3, 1),
+        transform 280ms cubic-bezier(0.16, 1, 0.3, 1);
+    pointer-events: none;
+}
+
+.pd__color-card:hover {
+    transform: translateY(-2px);
+    border-color: var(--line-strong);
+    box-shadow: 0 10px 22px -12px rgba(13, 13, 13, 0.25);
+}
+
+.pd__color-card.is-active {
+    border-color: var(--ink);
+    background: color-mix(in srgb, var(--swatch) 8%, var(--bg-raised, #fff));
+    box-shadow: 0 12px 26px -14px color-mix(in srgb, var(--swatch) 55%, transparent);
+}
+
+.pd__color-card.is-active .pd__color-card-check {
+    opacity: 1;
+    transform: scale(1);
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .pd__color-card,
+    .pd__color-card-check {
+        transition: none !important;
+        transform: none !important;
+    }
+}
+
 .pd__price {
     display: flex;
     align-items: center;

@@ -1,6 +1,6 @@
 import { useLayoutEffect, useState } from 'react'
 import { useParams, Link } from 'react-router-dom'
-import { motion } from 'framer-motion'
+import { motion, AnimatePresence } from 'framer-motion'
 import { ArrowLeft, Check, Shield, Truck, RotateCcw, ArrowUpRight, Star } from 'lucide-react'
 import { getProductBySlug } from '../data/products'
 import Testimonials from './Testimonials'
@@ -10,6 +10,7 @@ const ProductDetail = () => {
     const { slug } = useParams()
     const product = getProductBySlug(slug)
     const [active, setActive] = useState(0)
+    const [activeColor, setActiveColor] = useState(null)
 
     useLayoutEffect(() => {
         if (window.__lenis) {
@@ -35,7 +36,10 @@ const ProductDetail = () => {
     }
 
     const images = product.images && product.images.length > 0 ? product.images : [product.image]
-    const whatsappLink = `https://wa.me/916399561515?text=Hi%20Ardilla%2C%20I%27m%20interested%20in%20the%20${encodeURIComponent(product.name)}`
+    const stageSrc = activeColor !== null && product.colors ? product.colors[activeColor].image : images[active]
+    const colorName = activeColor !== null && product.colors ? product.colors[activeColor].name : null
+    const whatsappSubject = colorName ? `${product.name} — ${colorName}` : product.name
+    const whatsappLink = `https://wa.me/916399561515?text=Hi%20Ardilla%2C%20I%27m%20interested%20in%20the%20${encodeURIComponent(whatsappSubject)}`
     const pairSaving = product.price * 2 - product.pairPrice
 
     return (
@@ -64,14 +68,25 @@ const ProductDetail = () => {
                     >
                         <div className="pd__stage">
                             {product.badge && <span className="pd__badge">{product.badge}</span>}
-                            <img src={images[active]} alt={product.name} className="pd__stage-img" />
+                            <AnimatePresence mode="sync">
+                                <motion.img
+                                    key={stageSrc}
+                                    src={stageSrc}
+                                    alt={colorName ? `${product.name} — ${colorName}` : product.name}
+                                    className="pd__stage-img"
+                                    initial={{ opacity: 0, scale: 1.03 }}
+                                    animate={{ opacity: 1, scale: 1 }}
+                                    exit={{ opacity: 0 }}
+                                    transition={{ duration: 0.42, ease: [0.16, 1, 0.3, 1] }}
+                                />
+                            </AnimatePresence>
                         </div>
                         <div className="pd__thumbs">
                             {images.map((src, i) => (
                                 <button
                                     key={i}
-                                    className={`pd__thumb ${active === i ? 'is-active' : ''}`}
-                                    onClick={() => setActive(i)}
+                                    className={`pd__thumb ${activeColor === null && active === i ? 'is-active' : ''}`}
+                                    onClick={() => { setActive(i); setActiveColor(null) }}
                                     aria-label={`View image ${i + 1}`}
                                 >
                                     <img src={src} alt="" />
@@ -106,6 +121,41 @@ const ProductDetail = () => {
                                 <span key={i} className="tag">{f}</span>
                             ))}
                         </div>
+
+                        {product.colors && product.colors.length > 0 && (
+                            <div className="pd__colors">
+                                <div className="pd__colors-head">
+                                    <span className="pd__colors-label">
+                                        Colour · {product.colors.length} finish
+                                        {product.colors.length === 1 ? '' : 'es'}
+                                    </span>
+                                    <span className="pd__colors-value">{colorName || 'Tap to preview'}</span>
+                                </div>
+                                <div className="pd__color-cards">
+                                    {product.colors.map((c, i) => (
+                                        <button
+                                            key={c.name}
+                                            type="button"
+                                            className={`pd__color-card ${activeColor === i ? 'is-active' : ''}`}
+                                            onClick={() => setActiveColor(activeColor === i ? null : i)}
+                                            aria-label={c.name}
+                                            aria-pressed={activeColor === i}
+                                            title={c.name}
+                                            style={{ '--swatch': c.swatch }}
+                                        >
+                                            <span className="pd__color-card-dot" aria-hidden="true" />
+                                            <span className="pd__color-card-name">{c.name}</span>
+                                            <span
+                                                className="pd__color-card-check"
+                                                aria-hidden="true"
+                                            >
+                                                <Check size={12} strokeWidth={3} />
+                                            </span>
+                                        </button>
+                                    ))}
+                                </div>
+                            </div>
+                        )}
 
                         <div className="pd__price">
                             <div className="pd__price-row">
