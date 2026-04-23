@@ -1,0 +1,212 @@
+/* ===================================
+   HISTORY TIMELINE SECTION
+   =================================== */
+
+.history {
+    background: var(--color-bg-primary);
+    position: relative;
+    overflow: hidden;
+}
+
+.history::before {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 800px;
+    height: 800px;
+    background: radial-gradient(circle, rgba(139, 92, 246, 0.1) 0%, transparent 70%);
+    pointer-events: none;
+}
+
+.history__label {
+    font-size: var(--font-size-sm);
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    display: block;
+    margin-bottom: var(--spacing-md);
+}
+
+/* Timeline Container */
+.history__timeline {
+    position: relative;
+    max-width: 1000px;
+    margin: 0 auto;
+    padding: var(--spacing-2xl) 0;
+}
+
+.history__timeline-line {
+    position: absolute;
+    left: 50%;
+    top: 0;
+    bottom: 0;
+    width: 2px;
+    background: linear-gradient(to bottom,
+            transparent,
+            var(--color-accent-purple) 10%,
+            var(--color-accent-cyan) 50%,
+            var(--color-accent-purple) 90%,
+            transparent);
+    transform: translateX(-50%);
+}
+
+/* Timeline Item */
+.history__item {
+    position: relative;
+    display: flex;
+    align-items: center;
+    margin-bottom: var(--spacing-2xl);
+}
+
+.history__item:nth-child(odd) {
+    flex-direction: row;
+    padding-right: calc(50% + 40px);
+}
+
+.history__item:nth-child(even) {
+    flex-direction: row-reverse;
+    padding-left: calc(50% + 40px);
+}
+
+.history__item:last-of-type {
+    margin-bottom: 0;
+}
+
+/* Timeline Dot */
+.history__item-dot {
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 2;
+    box-shadow: 0 0 20px currentColor;
+}
+
+.history__item-dot-inner {
+    width: 8px;
+    height: 8px;
+    background: white;
+    border-radius: 50%;
+}
+
+/* Timeline Card */
+.history__item-content {
+    padding: var(--spacing-xl);
+    width: 100%;
+    position: relative;
+}
+
+.history__item-icon {
+    width: 50px;
+    height: 50px;
+    border-radius: var(--radius-md);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    margin-bottom: var(--spacing-md);
+}
+
+.history__item-header {
+    display: flex;
+    align-items: center;
+    gap: var(--spacing-md);
+    margin-bottom: var(--spacing-sm);
+}
+
+.history__item-era {
+    font-size: var(--font-size-xs);
+    color: var(--color-accent-purple);
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    font-weight: 600;
+}
+
+.history__item-year {
+    font-size: var(--font-size-xs);
+    color: var(--color-text-muted);
+    padding: var(--spacing-xs) var(--spacing-sm);
+    background: rgba(255, 255, 255, 0.05);
+    border-radius: var(--radius-full);
+}
+
+.history__item-title {
+    font-size: var(--font-size-xl);
+    font-weight: 700;
+    margin-bottom: var(--spacing-sm);
+}
+
+.history__item-description {
+    color: var(--color-text-secondary);
+    line-height: 1.7;
+    font-size: var(--font-size-base);
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    .history__timeline-line {
+        left: 20px;
+    }
+
+    .history__item {
+        flex-direction: column !important;
+        padding-left: 60px !important;
+        padding-right: 0 !important;
+        align-items: flex-start;
+    }
+
+    .history__item-dot {
+        left: 20px;
+    }
+
+    .history__item-content {
+        padding: var(--spacing-lg);
+    }
+
+    .history__item-icon {
+        width: 44px;
+        height: 44px;
+    }
+
+    .history__item-title {
+        font-size: var(--font-size-lg);
+    }
+}
+
+@media (max-width: 480px) {
+    .history__timeline-line {
+        left: 15px;
+    }
+
+    .history__item {
+        padding-left: 45px !important;
+    }
+
+    .history__item-dot {
+        left: 15px;
+        width: 16px;
+        height: 16px;
+    }
+
+    .history__item-dot-inner {
+        width: 6px;
+        height: 6px;
+    }
+
+    .history__item-content {
+        padding: var(--spacing-md);
+    }
+
+    .history__item-header {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: var(--spacing-xs);
+    }
+}

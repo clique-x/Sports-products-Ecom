@@ -1,0 +1,499 @@
+/* ===================================
+   CAMPAIGN BANNERS — Signature Series Spotlight
+   =================================== */
+
+.campaign-banners {
+    position: relative;
+    background: #070707;
+    color: #fff;
+    padding: var(--s-10) 0 var(--s-10);
+    overflow: hidden;
+    isolation: isolate;
+}
+
+.campaign-banners::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background:
+        radial-gradient(ellipse at 20% 0%, rgba(242, 92, 31, 0.08), transparent 55%),
+        radial-gradient(ellipse at 80% 100%, rgba(0, 230, 255, 0.06), transparent 55%);
+    pointer-events: none;
+    z-index: 0;
+}
+
+.campaign-banners__intro {
+    position: relative;
+    z-index: 1;
+    text-align: center;
+    margin-bottom: var(--s-9);
+}
+
+.campaign-banners__intro .eyebrow {
+    color: rgba(255, 255, 255, 0.55);
+    letter-spacing: 0.28em;
+}
+
+.campaign-banners__title {
+    color: #fff;
+    margin-top: var(--s-4);
+    font-weight: 500;
+    letter-spacing: -0.02em;
+}
+
+.campaign-banners__title em {
+    font-family: var(--font-script);
+    font-style: italic;
+    background: linear-gradient(100deg, #F25C1F 0%, #F2A21F 45%, #FF3EC8 70%, #00E5FF 100%);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+    font-weight: 400;
+}
+
+.campaign-banners__stack {
+    position: relative;
+    z-index: 1;
+    display: flex;
+    flex-direction: column;
+    gap: var(--s-9);
+    padding: 0 clamp(16px, 4vw, 64px);
+}
+
+/* ============ CARD ============ */
+.campaign-card {
+    position: relative;
+    width: 100%;
+    aspect-ratio: 3 / 1;
+    border-radius: var(--r-lg);
+    overflow: hidden;
+    perspective: 1400px;
+    transform-style: preserve-3d;
+    will-change: transform;
+    cursor: pointer;
+    background: #0a0a0a;
+}
+
+.campaign-card__stage {
+    position: absolute;
+    inset: 0;
+    transform-style: preserve-3d;
+    transition: transform var(--t-slow);
+}
+
+/* -------- media / image -------- */
+.campaign-card__media {
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: -4%;
+    bottom: -4%;
+    will-change: transform;
+}
+
+.campaign-card__media img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center;
+    display: block;
+    user-select: none;
+    -webkit-user-drag: none;
+}
+
+/* -------- dim (subtle vignette, does NOT dim over the branding areas) -------- */
+.campaign-card__dim {
+    position: absolute;
+    inset: 0;
+    background: radial-gradient(
+        ellipse at 50% 50%,
+        transparent 55%,
+        rgba(0, 0, 0, 0.25) 100%
+    );
+    pointer-events: none;
+}
+
+/* -------- holographic sheen -------- */
+.campaign-card__sheen {
+    position: absolute;
+    top: -25%;
+    left: -40%;
+    width: 40%;
+    height: 150%;
+    background: linear-gradient(
+        100deg,
+        transparent 0%,
+        rgba(255, 255, 255, 0.02) 30%,
+        rgba(255, 255, 255, 0.28) 48%,
+        rgba(255, 255, 255, 0.5) 50%,
+        rgba(255, 255, 255, 0.28) 52%,
+        rgba(255, 255, 255, 0.02) 70%,
+        transparent 100%
+    );
+    transform: translateX(-50%) rotate(18deg);
+    mix-blend-mode: overlay;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 280ms ease-out;
+}
+
+.campaign-card:hover .campaign-card__sheen {
+    animation: sheen-sweep 1300ms cubic-bezier(0.16, 1, 0.3, 1);
+    opacity: 1;
+}
+
+@keyframes sheen-sweep {
+    0%   { transform: translateX(-50%) rotate(18deg); opacity: 0; }
+    15%  { opacity: 1; }
+    90%  { opacity: 0.8; }
+    100% { transform: translateX(350%) rotate(18deg); opacity: 0; }
+}
+
+/* -------- cursor-following spotlight -------- */
+.campaign-card__spot {
+    position: absolute;
+    inset: 0;
+    background: radial-gradient(
+        380px circle at var(--spot-x, 50%) var(--spot-y, 50%),
+        rgba(255, 255, 255, 0.12),
+        transparent 60%
+    );
+    mix-blend-mode: overlay;
+    opacity: 0;
+    transition: opacity 320ms ease;
+    pointer-events: none;
+}
+
+.campaign-card:hover .campaign-card__spot {
+    opacity: 1;
+}
+
+/* -------- grain -------- */
+.campaign-card__grain {
+    position: absolute;
+    inset: 0;
+    background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='200' height='200'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' seed='3'/><feColorMatrix values='0 0 0 0 1  0 0 0 0 1  0 0 0 0 1  0 0 0 0.35 0'/></filter><rect width='100%' height='100%' filter='url(%23n)' opacity='0.5'/></svg>");
+    background-size: 200px 200px;
+    mix-blend-mode: overlay;
+    opacity: 0.35;
+    pointer-events: none;
+}
+
+/* -------- ambient colored glow (outside the frame, themed) -------- */
+.campaign-card__glow {
+    position: absolute;
+    inset: -40px;
+    border-radius: inherit;
+    pointer-events: none;
+    z-index: -1;
+    opacity: 0.3;
+    filter: blur(45px);
+    transition: opacity 420ms ease;
+}
+
+.campaign-card:hover .campaign-card__glow {
+    opacity: 0.7;
+}
+
+.campaign-card--fire .campaign-card__glow {
+    background: radial-gradient(ellipse at 65% 55%, #ff4a10 0%, transparent 65%);
+}
+
+.campaign-card--neon .campaign-card__glow {
+    background:
+        radial-gradient(ellipse at 30% 50%, #00e5ff 0%, transparent 55%),
+        radial-gradient(ellipse at 75% 50%, #ff3ec8 0%, transparent 55%);
+}
+
+/* -------- index ticker (top-left) -------- */
+.campaign-card__index {
+    position: absolute;
+    top: clamp(18px, 3vw, 32px);
+    left: clamp(18px, 3vw, 32px);
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    z-index: 2;
+    font-family: var(--font-sans);
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    color: rgba(255, 255, 255, 0.85);
+    text-shadow: 0 1px 4px rgba(0, 0, 0, 0.5);
+}
+
+.campaign-card__index-num {
+    font-size: 14px;
+    color: #fff;
+}
+
+.campaign-card__index-line {
+    width: 38px;
+    height: 1px;
+    background: rgba(255, 255, 255, 0.55);
+}
+
+/* -------- CTA — floating pill bottom-right -------- */
+.campaign-card__cta {
+    position: absolute;
+    right: clamp(18px, 3vw, 32px);
+    bottom: clamp(18px, 3vw, 32px);
+    z-index: 3;
+    display: inline-flex;
+    align-items: center;
+    gap: 14px;
+    padding: 14px 22px 14px 24px;
+    border-radius: var(--r-pill);
+    background: rgba(10, 10, 10, 0.55);
+    backdrop-filter: blur(14px);
+    -webkit-backdrop-filter: blur(14px);
+    border: 1px solid rgba(255, 255, 255, 0.18);
+    color: #fff;
+    text-decoration: none;
+    font-family: var(--font-sans);
+    font-size: 13px;
+    font-weight: 600;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    overflow: hidden;
+    transform: translateY(0);
+    transition:
+        transform var(--t-slow),
+        background var(--t-base),
+        border-color var(--t-base),
+        padding-right var(--t-slow);
+}
+
+.campaign-card__cta-label {
+    position: relative;
+    display: inline-block;
+    overflow: hidden;
+    height: 1em;
+    line-height: 1;
+}
+
+.campaign-card__cta-top,
+.campaign-card__cta-bottom {
+    display: block;
+    transition: transform var(--t-slow);
+}
+
+.campaign-card__cta-bottom {
+    position: absolute;
+    top: 100%;
+    left: 0;
+}
+
+.campaign-card__cta:hover .campaign-card__cta-top   { transform: translateY(-100%); }
+.campaign-card__cta:hover .campaign-card__cta-bottom { transform: translateY(-100%); }
+
+.campaign-card__cta-arrow {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 22px;
+    height: 22px;
+    transition: transform var(--t-slow);
+}
+
+.campaign-card__cta:hover .campaign-card__cta-arrow {
+    transform: translate(4px, -4px);
+}
+
+.campaign-card--fire .campaign-card__cta:hover {
+    background: rgba(242, 92, 31, 0.88);
+    border-color: rgba(255, 190, 130, 0.8);
+    box-shadow: 0 10px 40px rgba(242, 92, 31, 0.5);
+}
+
+.campaign-card--neon .campaign-card__cta:hover {
+    background: rgba(0, 229, 255, 0.2);
+    border-color: rgba(255, 62, 200, 0.75);
+    box-shadow:
+        0 0 0 1px rgba(255, 62, 200, 0.35),
+        0 10px 40px rgba(255, 62, 200, 0.35);
+}
+
+/* ============ FOOTER (mobile-only product block) ============ */
+.campaign-card__footer {
+    display: none;
+}
+
+.campaign-card__footer-chapter {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    font-family: var(--font-sans);
+    font-size: 10px;
+    font-weight: 600;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    color: rgba(255, 255, 255, 0.55);
+    margin-bottom: 14px;
+}
+
+.campaign-card__footer-chapter > span:first-child {
+    color: #fff;
+    font-size: 13px;
+    letter-spacing: 0.18em;
+}
+
+.campaign-card__footer-line {
+    width: 28px;
+    height: 1px;
+    background: rgba(255, 255, 255, 0.35);
+}
+
+.campaign-card__footer-name {
+    font-family: var(--font-sans);
+    font-size: clamp(22px, 6.5vw, 30px);
+    font-weight: 600;
+    letter-spacing: 0.02em;
+    color: #fff;
+    line-height: 1.05;
+    margin: 0 0 10px;
+}
+
+.campaign-card__footer-tagline {
+    font-size: 14px;
+    line-height: 1.55;
+    color: rgba(255, 255, 255, 0.68);
+    margin: 0 0 22px;
+    max-width: 36ch;
+}
+
+.campaign-card__footer-cta {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    padding: 14px 22px;
+    border-radius: var(--r-pill);
+    background: rgba(255, 255, 255, 0.06);
+    border: 1px solid rgba(255, 255, 255, 0.18);
+    color: #fff;
+    text-decoration: none;
+    font-family: var(--font-sans);
+    font-size: 12px;
+    font-weight: 600;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    transition: background var(--t-base), border-color var(--t-base);
+}
+
+.campaign-card--fire .campaign-card__footer-cta:active {
+    background: rgba(242, 92, 31, 0.85);
+    border-color: rgba(255, 190, 130, 0.7);
+}
+
+.campaign-card--neon .campaign-card__footer-cta:active {
+    background: rgba(0, 229, 255, 0.22);
+    border-color: rgba(255, 62, 200, 0.7);
+}
+
+/* ============ RESPONSIVE ============ */
+@media (max-width: 900px) {
+    .campaign-banners {
+        display: none;
+    }
+}
+
+@media (max-width: 900px) and (min-width: 99999px) {
+    .campaign-banners {
+        padding: var(--s-8) 0 var(--s-9);
+    }
+
+    .campaign-banners__intro {
+        margin-bottom: var(--s-7);
+    }
+
+    .campaign-banners__title {
+        font-size: clamp(32px, 9vw, 48px);
+        line-height: 1.05;
+    }
+
+    .campaign-banners__stack {
+        gap: var(--s-7);
+        padding: 0 16px;
+    }
+
+    /* Let the banner show at its natural 3:1 aspect — no crop, no zoom */
+    .campaign-card {
+        aspect-ratio: auto;
+        overflow: visible;
+        background: transparent;
+        border-radius: var(--r-md);
+        perspective: none;
+    }
+
+    .campaign-card__stage {
+        position: relative;
+        inset: auto;
+        aspect-ratio: 3 / 1;
+        border-radius: var(--r-md);
+        overflow: hidden;
+        transform: none !important;
+    }
+
+    .campaign-card__media {
+        left: 0;
+        right: 0;
+        top: 0;
+        bottom: 0;
+    }
+
+    .campaign-card__media img {
+        object-fit: cover;
+        object-position: center;
+    }
+
+    /* Hide desktop-only effects that don't work on touch */
+    .campaign-card__cta,
+    .campaign-card__spot,
+    .campaign-card__sheen {
+        display: none;
+    }
+
+    /* Softer dim on mobile so the image reads fully */
+    .campaign-card__dim {
+        background: linear-gradient(
+            180deg,
+            transparent 60%,
+            rgba(0, 0, 0, 0.25) 100%
+        );
+        opacity: 1 !important;
+    }
+
+    /* Tame the ambient glow on mobile */
+    .campaign-card__glow {
+        inset: -20px;
+        opacity: 0.4;
+    }
+
+    /* Show the product footer block */
+    .campaign-card__footer {
+        display: block;
+        padding: 22px 4px 0;
+    }
+}
+
+@media (max-width: 480px) {
+    .campaign-card__stage {
+        aspect-ratio: 16 / 9;
+    }
+
+    .campaign-card__footer-tagline {
+        font-size: 13.5px;
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .campaign-card,
+    .campaign-card__media,
+    .campaign-card__sheen,
+    .campaign-card__spot,
+    .campaign-card__glow {
+        transition: none !important;
+        animation: none !important;
+    }
+}

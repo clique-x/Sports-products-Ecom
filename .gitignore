@@ -1,0 +1,38 @@
+# Dependencies
+node_modules/
+
+# Build output
+dist/
+build/
+
+# Environment
+.env
+.env.local
+.env.*.local
+
+# Logs
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+
+# Editor / OS
+.DS_Store
+.vscode/
+.idea/
+*.swp
+*.swo
+Thumbs.db
+
+# Local scratch / client-specific / cached scrapes
+.firecrawl/
+invoice-*.html
+invoice-*.pdf
+ardilla-dist.zip
+ardilla-dist.tar.gz
+deer-*.png
+
+# Optional: uncomment if you don't want raw source shoots in the repo
+# studio_dark/
+# creatives/
