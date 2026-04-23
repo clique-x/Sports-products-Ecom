@@ -77,13 +77,36 @@ jobs:
           </IfModule>
           HTACCESS
 
-      - name: Deploy to Hostinger via rsync over SSH
-        uses: burnett01/rsync-deployments@8.0.0
-        with:
-          switches: -avzr --delete --exclude=.well-known/ --exclude=cgi-bin/
-          path: dist/
-          remote_path: ~/public_html/
-          remote_host: ${{ secrets.SSH_HOST }}
-          remote_port: ${{ secrets.SSH_PORT }}
-          remote_user: ${{ secrets.SSH_USER }}
-          remote_key: ${{ secrets.SSH_KEY }}
+      - name: Prepare SSH
+        env:
+          SSH_KEY: ${{ secrets.SSH_KEY }}
+          SSH_HOST: ${{ secrets.SSH_HOST }}
+          SSH_PORT: ${{ secrets.SSH_PORT }}
+        run: |
+          mkdir -p ~/.ssh
+          printf '%s\n' "$SSH_KEY" > ~/.ssh/deploy_key
+          chmod 600 ~/.ssh/deploy_key
+          # Sanity check the key format
+          ssh-keygen -l -f ~/.ssh/deploy_key || { echo "::error::SSH_KEY secret is not a valid private key"; exit 1; }
+          # Trust the host
+          ssh-keyscan -p "$SSH_PORT" -H "$SSH_HOST" >> ~/.ssh/known_hosts 2>/dev/null
+
+      - name: Verify SSH connection
+        env:
+          SSH_HOST: ${{ secrets.SSH_HOST }}
+          SSH_PORT: ${{ secrets.SSH_PORT }}
+          SSH_USER: ${{ secrets.SSH_USER }}
+        run: |
+          ssh -i ~/.ssh/deploy_key -p "$SSH_PORT" -o StrictHostKeyChecking=no "$SSH_USER@$SSH_HOST" "echo '✓ Connected to '$(hostname); pwd; ls -la ~/public_html/ | head -5"
+
+      - name: Deploy dist/ to Hostinger
+        env:
+          SSH_HOST: ${{ secrets.SSH_HOST }}
+          SSH_PORT: ${{ secrets.SSH_PORT }}
+          SSH_USER: ${{ secrets.SSH_USER }}
+        run: |
+          rsync -avzr --delete \
+            --exclude='.well-known/' \
+            --exclude='cgi-bin/' \
+            -e "ssh -i ~/.ssh/deploy_key -p $SSH_PORT -o StrictHostKeyChecking=no" \
+            dist/ "$SSH_USER@$SSH_HOST:~/public_html/"
