@@ -88,8 +88,16 @@ jobs:
           chmod 600 ~/.ssh/deploy_key
           # Sanity check the key format
           ssh-keygen -l -f ~/.ssh/deploy_key || { echo "::error::SSH_KEY secret is not a valid private key"; exit 1; }
-          # Trust the host
-          ssh-keyscan -p "$SSH_PORT" -H "$SSH_HOST" >> ~/.ssh/known_hosts 2>/dev/null
+          # Trust the host — retry up to 3 times on transient failures
+          for i in 1 2 3; do
+            if ssh-keyscan -T 15 -p "$SSH_PORT" -H "$SSH_HOST" >> ~/.ssh/known_hosts 2>/tmp/keyscan.err; then
+              [ -s ~/.ssh/known_hosts ] && break
+            fi
+            echo "ssh-keyscan attempt $i failed, retrying..."
+            cat /tmp/keyscan.err
+            sleep 5
+          done
+          [ -s ~/.ssh/known_hosts ] || { echo "::error::ssh-keyscan failed after 3 attempts"; exit 1; }
 
       - name: Verify SSH connection
         env:
