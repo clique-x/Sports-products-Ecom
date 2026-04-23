@@ -19,7 +19,7 @@ const fadeUp = {
 
 const ProductCard = ({ product, index, reverse = false }) => {
     const [zoomed, setZoomed] = useState(false)
-    const [colorIdx, setColorIdx] = useState(0)
+    const [colorIdx, setColorIdx] = useState(-1)
     const { ref: tiltRef, handlers, tilt, parallax, spotlight } = useCursorTilt({
         maxTilt: 3.5,
         maxParallax: 10,
@@ -49,8 +49,8 @@ const ProductCard = ({ product, index, reverse = false }) => {
 
     const indexLabel = String(index + 1).padStart(2, '0')
     const colors = product.colors || []
-    const activeColor = colors[colorIdx]
-    const landscape = activeColor?.image || product.image || product.heroImage?.landscape
+    const activeColor = colorIdx >= 0 ? colors[colorIdx] : null
+    const landscape = activeColor?.image || product.heroImage?.landscape || product.image
     const accent = reverse ? 'var(--sky-deep)' : 'var(--orange)'
 
     const specs = [
@@ -207,7 +207,7 @@ const ProductCard = ({ product, index, reverse = false }) => {
                         <div className="pcard__colors-head">
                             <span className="pcard__colors-label">Colourways</span>
                             <span className="pcard__colors-active">
-                                {activeColor?.name}
+                                {activeColor?.name || `${colors.length} finishes`}
                             </span>
                         </div>
                         <div className="pcard__colors-row">
@@ -216,7 +216,7 @@ const ProductCard = ({ product, index, reverse = false }) => {
                                     key={c.name}
                                     type="button"
                                     className={`pcard__color ${colorIdx === i ? 'is-active' : ''}`}
-                                    onClick={() => setColorIdx(i)}
+                                    onClick={() => setColorIdx(colorIdx === i ? -1 : i)}
                                     aria-label={c.name}
                                     aria-pressed={colorIdx === i}
                                     title={c.name}
