@@ -116,21 +116,6 @@ const BannerCard = ({ item, index }) => {
                     </span>
                 </Link>
             </motion.div>
-
-            {/* Content block — mobile only (shown below banner) */}
-            <div className={`campaign-card__footer campaign-card__footer--${item.theme}`}>
-                <div className="campaign-card__footer-chapter">
-                    <span>0{index + 1}</span>
-                    <span className="campaign-card__footer-line" />
-                    <span>{item.eyebrow}</span>
-                </div>
-                <h3 className="campaign-card__footer-name">{item.productName}</h3>
-                <p className="campaign-card__footer-tagline">{item.tagline}</p>
-                <Link to={item.href} className="campaign-card__footer-cta">
-                    <span>{item.cta}</span>
-                    <ArrowUpRight size={18} strokeWidth={2.3} />
-                </Link>
-            </div>
         </motion.article>
     )
 }

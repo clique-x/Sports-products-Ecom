@@ -25,7 +25,7 @@
     /* Type */
     --font-sans: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
     --font-script: 'Lobster', 'Brush Script MT', cursive;
-    --font-brand: 'Magneto', 'Lobster', 'Brush Script MT', cursive;
+    --font-brand: magneto, 'Magneto', 'Lobster', 'Brush Script MT', cursive;
 
     /* Radius — sharper than glass era */
     --r-xs: 4px;

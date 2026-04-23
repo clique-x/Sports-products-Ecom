@@ -37,7 +37,11 @@ const Footer = () => {
                     <div className="footer__brand">
                         <a href="/" className="footer__brand-lock">
                             <img src="/images/logo/logo.png" alt="Ardilla Sports" className="footer__logo" />
-                            <span className="footer__wordmark">Ardilla</span>
+                            <img
+                                src="/images/logo/ardilla-wordmark.png"
+                                alt="Ardilla"
+                                className="footer__wordmark"
+                            />
                         </a>
                         <p className="footer__tagline">
                             Tournament-grade badminton rackets engineered in Uttarakhand, India.

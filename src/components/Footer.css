@@ -38,13 +38,12 @@
 }
 
 .footer__wordmark {
-    font-family: var(--font-script);
-    font-weight: 400;
-    font-size: 30px;
-    letter-spacing: 0;
-    color: #fff;
-    line-height: 1;
-    padding-top: 2px;
+    height: 36px;
+    width: auto;
+    display: block;
+    object-fit: contain;
+    image-rendering: -webkit-optimize-contrast;
+    filter: invert(1);
 }
 
 .footer__tagline {

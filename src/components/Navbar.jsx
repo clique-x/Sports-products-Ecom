@@ -41,7 +41,11 @@ const Navbar = () => {
                 <div className="nav__bar container">
                     <Link to="/" className="nav__brand" onClick={() => setOpen(false)}>
                         <img src="/images/logo/logo.png" alt="Ardilla Sports" className="nav__logo" />
-                        <span className="nav__wordmark">Ardilla</span>
+                        <img
+                            src="/images/logo/ardilla-wordmark.png"
+                            alt="Ardilla"
+                            className="nav__wordmark"
+                        />
                     </Link>
 
                     <nav className="nav__links">

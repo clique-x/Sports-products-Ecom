@@ -72,13 +72,11 @@
 }
 
 .nav__wordmark {
-    font-family: var(--font-brand);
-    font-weight: 400;
-    font-size: 30px;
-    letter-spacing: 0.01em;
-    color: var(--ink);
-    line-height: 1;
-    padding-top: 2px;
+    height: 34px;
+    width: auto;
+    display: block;
+    object-fit: contain;
+    image-rendering: -webkit-optimize-contrast;
 }
 
 .nav__links {
@@ -321,7 +319,7 @@
     }
 
     .nav__wordmark {
-        font-size: 22px;
+        height: 26px;
     }
 
     .nav__actions {
