@@ -68,16 +68,16 @@ const ProductDetail = () => {
                     >
                         <div className="pd__stage">
                             {product.badge && <span className="pd__badge">{product.badge}</span>}
-                            <AnimatePresence mode="sync">
+                            <AnimatePresence mode="popLayout" initial={false}>
                                 <motion.img
                                     key={stageSrc}
                                     src={stageSrc}
                                     alt={colorName ? `${product.name} — ${colorName}` : product.name}
                                     className="pd__stage-img"
-                                    initial={{ opacity: 0, scale: 1.03 }}
-                                    animate={{ opacity: 1, scale: 1 }}
+                                    initial={{ opacity: 0 }}
+                                    animate={{ opacity: 1 }}
                                     exit={{ opacity: 0 }}
-                                    transition={{ duration: 0.42, ease: [0.16, 1, 0.3, 1] }}
+                                    transition={{ duration: 0.35, ease: [0.16, 1, 0.3, 1] }}
                                 />
                             </AnimatePresence>
                         </div>

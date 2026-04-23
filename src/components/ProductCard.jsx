@@ -84,7 +84,7 @@ const ProductCard = ({ product, index, reverse = false }) => {
                 transition={{ duration: 1.15, ease: EASE }}
             >
                 <div className="pcard__img-wrap">
-                    <AnimatePresence mode="sync">
+                    <AnimatePresence mode="popLayout" initial={false}>
                         <motion.img
                             key={landscape}
                             src={landscape}
@@ -92,10 +92,10 @@ const ProductCard = ({ product, index, reverse = false }) => {
                             className="pcard__img"
                             loading={index === 0 ? 'eager' : 'lazy'}
                             decoding="async"
-                            initial={{ opacity: 0, scale: 1.03 }}
-                            animate={{ opacity: 1, scale: 1 }}
+                            initial={{ opacity: 0 }}
+                            animate={{ opacity: 1 }}
                             exit={{ opacity: 0 }}
-                            transition={{ duration: 0.42, ease: EASE }}
+                            transition={{ duration: 0.35, ease: EASE }}
                         />
                     </AnimatePresence>
                 </div>
