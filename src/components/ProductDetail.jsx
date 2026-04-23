@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { useLayoutEffect, useState } from 'react'
 import { useParams, Link } from 'react-router-dom'
 import { motion } from 'framer-motion'
 import { ArrowLeft, Check, Shield, Truck, RotateCcw, ArrowUpRight, Star } from 'lucide-react'
@@ -10,6 +10,14 @@ const ProductDetail = () => {
     const { slug } = useParams()
     const product = getProductBySlug(slug)
     const [active, setActive] = useState(0)
+
+    useLayoutEffect(() => {
+        if (window.__lenis) {
+            window.__lenis.scrollTo(0, { immediate: true, force: true })
+        } else {
+            window.scrollTo(0, 0)
+        }
+    }, [slug])
 
     if (!product) {
         return (

@@ -5,7 +5,7 @@ export const products = [
         slug: 'ardilla',
         name: 'Ardilla',
         model: 'Ardilla',
-        category: 'Professional',
+        category: 'Metallica Series',
         price: 299,
         pairPrice: 599,
         rating: 4.9,
@@ -13,10 +13,10 @@ export const products = [
         features: ['Premium Build', 'Professional Grade', 'High Performance'],
         gradient: 'linear-gradient(135deg, #8B5CF6 0%, #6366F1 100%)',
         badge: 'Best Seller',
-        image: '/images/Ardilla.png',
+        image: '/images/products/ardilla/20260416_151349.jpg',
         heroImage: {
             landscape: '/images/products/ardilla/hero-landscape.jpg',
-            portrait: '/images/products/ardilla/hero-portrait.jpg',
+            portrait: '/images/products/ardilla/20260416_151349.jpg',
         },
         images: [
             '/images/products/ardilla/20260416_151349.jpg',
@@ -26,7 +26,7 @@ export const products = [
             '/images/products/ardilla/20260416_151626.jpg',
             '/images/products/ardilla/20260416_151636.jpg'
         ],
-        description: 'The Ardilla is our flagship professional-grade badminton racket, designed for players who demand the best. With its premium build quality and exceptional performance characteristics, this racket delivers unmatched power and precision on the court.',
+        description: 'Designed specifically for those who are starting their journey. Picking up the racket for the first time, you need gear that grows with you. Our beginner series is built for durability. The integrated joint technology provides a stable feel and durability for protection from clashes.',
         specifications: {
             weight: '85g (4U)',
             length: '675mm',
@@ -69,7 +69,7 @@ export const products = [
             '/images/products/ardilla-jointless/20260417_191249.jpg',
             '/images/products/ardilla-jointless/20260417_191336.jpg'
         ],
-        description: 'The Ardilla Playful 666 Jointless represents the pinnacle of racket engineering. Its revolutionary jointless construction provides unparalleled durability and energy transfer, making it the ultimate choice for serious competitive players.',
+        description: 'Stop settling for the vibration and "give" of a traditional two-piece racket. Our jointless alloy construction eliminates the external T-joint, creating a sleek, unified frame that feels solid in your hand. By integrating the head and shaft into a single piece, we’ve significantly reduced torsion (twisting) during high-impact smashes, giving you the stability needed to direct the shuttle exactly where you want it. Built to endure the rigors of the learning process, this high-grade alloy frame is resilient enough to handle accidental floor scrapes and clashes without losing its shape. Combined with an Isometric head geometry, we’ve expanded the sweet spot to ensure that even off-center hits carry the power and depth you need to stay in the rally.',
         specifications: {
             weight: '82g (5U)',
             length: '675mm',

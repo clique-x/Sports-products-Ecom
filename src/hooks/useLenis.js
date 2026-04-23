@@ -13,6 +13,7 @@ export function useLenis() {
             wheelMultiplier: 1,
             touchMultiplier: 1.5,
         })
+        window.__lenis = lenis
 
         let rafId
         const raf = (time) => {
@@ -24,6 +25,7 @@ export function useLenis() {
         return () => {
             cancelAnimationFrame(rafId)
             lenis.destroy()
+            if (window.__lenis === lenis) delete window.__lenis
         }
     }, [])
 }
