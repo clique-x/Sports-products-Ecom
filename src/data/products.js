@@ -80,7 +80,6 @@ export const products = [
         colors: [
             { name: 'Crimson Blaze', swatch: '#e53935', image: '/images/products/ardilla-jointless/gallery-05.jpg' },
             { name: 'Neon Glacier', swatch: '#6ec8e6', image: '/images/products/ardilla-jointless/gallery-06.jpg' },
-            { name: 'Rose Gold Glide', swatch: '#d4a78a', image: '/images/products/ardilla-jointless/gallery-02.jpg' },
             { name: 'Purple Fury', swatch: '#5a2ea6' },
             { name: 'Solar Flare', swatch: '#f5b400', image: '/images/products/ardilla-jointless/gallery-07.jpg' },
             { name: 'Phantom Onyx', swatch: '#1a1a1a' }
