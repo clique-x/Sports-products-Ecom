@@ -48,7 +48,8 @@ const ProductDetail = () => {
     }
 
     const images = product.images && product.images.length > 0 ? product.images : [product.image]
-    const stageSrc = activeColor !== null && product.colors ? product.colors[activeColor].image : images[active]
+    const colorImg = activeColor !== null ? product.colors?.[activeColor]?.image : null
+    const stageSrc = colorImg || images[active]
     const colorName = activeColor !== null && product.colors ? product.colors[activeColor].name : null
     const whatsappSubject = colorName ? `${product.name} — ${colorName}` : product.name
     const whatsappLink = `https://wa.me/916399561515?text=Hi%20Ardilla%2C%20I%27m%20interested%20in%20the%20${encodeURIComponent(whatsappSubject)}`

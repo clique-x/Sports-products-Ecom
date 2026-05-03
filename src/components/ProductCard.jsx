@@ -50,7 +50,7 @@ const ProductCard = ({ product, index, reverse = false }) => {
     const indexLabel = String(index + 1).padStart(2, '0')
     const colors = product.colors || []
     const activeColor = colorIdx >= 0 ? colors[colorIdx] : null
-    const landscape = activeColor?.image || product.heroImage?.landscape || product.image
+    const landscape = (activeColor && activeColor.image) || product.heroImage?.landscape || product.image
     const accent = reverse ? 'var(--sky-deep)' : 'var(--orange)'
 
     const specs = [

@@ -27,9 +27,9 @@ export const products = [
             '/images/products/ardilla/20260416_151636.jpg'
         ],
         colors: [
-            { name: 'Velocity Blue', swatch: '#2e86de', image: '/images/products/ardilla/colors/velocity-blue.png' },
-            { name: 'Zenith Rose', swatch: '#e91e63', image: '/images/products/ardilla/colors/zenith-rose.png' },
-            { name: 'Raptor Gold', swatch: '#f5c518', image: '/images/products/ardilla/colors/raptor-gold.png' }
+            { name: 'Velocity Blue', swatch: '#2e86de', image: '/images/products/ardilla/20260416_151349.jpg' },
+            { name: 'Zenith Rose', swatch: '#e91e63', image: '/images/products/ardilla/20260416_151524.jpg' },
+            { name: 'Raptor Gold', swatch: '#f5c518', image: '/images/products/ardilla/20260416_151626.jpg' }
         ],
         description: 'Designed specifically for those who are starting their journey. Picking up the racket for the first time, you need gear that grows with you. Our beginner series is built for durability. The integrated joint technology provides a stable feel and durability for protection from clashes.',
         specifications: {
@@ -81,9 +81,9 @@ export const products = [
             { name: 'Crimson Blaze', swatch: '#e53935', image: '/images/products/ardilla-jointless/gallery-05.jpg' },
             { name: 'Neon Glacier', swatch: '#6ec8e6', image: '/images/products/ardilla-jointless/gallery-06.jpg' },
             { name: 'Rose Gold Glide', swatch: '#d4a78a', image: '/images/products/ardilla-jointless/gallery-02.jpg' },
-            { name: 'Purple Fury', swatch: '#5a2ea6', image: '/images/products/ardilla-jointless/hero-spotlight.jpg' },
+            { name: 'Purple Fury', swatch: '#5a2ea6' },
             { name: 'Solar Flare', swatch: '#f5b400', image: '/images/products/ardilla-jointless/gallery-07.jpg' },
-            { name: 'Phantom Onyx', swatch: '#1a1a1a', image: '/images/products/ardilla-jointless/hero-spotlight.jpg' }
+            { name: 'Phantom Onyx', swatch: '#1a1a1a' }
         ],
         description: 'Stop settling for the vibration and "give" of a traditional two-piece racket. Our jointless alloy construction eliminates the external T-joint, creating a sleek, unified frame that feels solid in your hand. By integrating the head and shaft into a single piece, we’ve significantly reduced torsion (twisting) during high-impact smashes, giving you the stability needed to direct the shuttle exactly where you want it. Built to endure the rigors of the learning process, this high-grade alloy frame is resilient enough to handle accidental floor scrapes and clashes without losing its shape. Combined with an Isometric head geometry, we’ve expanded the sweet spot to ensure that even off-center hits carry the power and depth you need to stay in the rally.',
         specifications: {
