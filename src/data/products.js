@@ -65,14 +65,18 @@ export const products = [
         badge: 'Premium',
         image: '/images/Ardilla playful 666 jointless.png',
         heroImage: {
-            landscape: '/images/products/ardilla-jointless/20260417_191200.jpg',
-            portrait: '/images/products/ardilla-jointless/20260417_191200.jpg',
+            landscape: '/images/products/ardilla-jointless/hero-spotlight.jpg',
+            portrait: '/images/products/ardilla-jointless/hero-spotlight.jpg',
         },
         images: [
-            '/images/products/ardilla-jointless/20260417_191200.jpg',
-            '/images/products/ardilla-jointless/20260417_191231.jpg',
-            '/images/products/ardilla-jointless/20260417_191249.jpg',
-            '/images/products/ardilla-jointless/20260417_191336.jpg'
+            '/images/products/ardilla-jointless/gallery-01.jpg',
+            '/images/products/ardilla-jointless/gallery-02.jpg',
+            '/images/products/ardilla-jointless/gallery-03.jpg',
+            '/images/products/ardilla-jointless/gallery-04.jpg',
+            '/images/products/ardilla-jointless/gallery-05.jpg',
+            '/images/products/ardilla-jointless/gallery-06.jpg',
+            '/images/products/ardilla-jointless/gallery-07.jpg',
+            '/images/products/ardilla-jointless/gallery-08.jpg'
         ],
         colors: [
             { name: 'Crimson Blaze', swatch: '#e53935', image: '/images/products/ardilla-jointless/colors/crimson-blaze.png' },
