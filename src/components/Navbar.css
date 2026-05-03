@@ -65,14 +65,14 @@
 }
 
 .nav__logo {
-    height: 52px;
+    height: 68px;
     width: auto;
     object-fit: contain;
     image-rendering: -webkit-optimize-contrast;
 }
 
 .nav__wordmark {
-    height: 34px;
+    height: 44px;
     width: auto;
     display: block;
     object-fit: contain;
@@ -315,11 +315,11 @@
     }
 
     .nav__logo {
-        height: 36px;
+        height: 46px;
     }
 
     .nav__wordmark {
-        height: 26px;
+        height: 32px;
     }
 
     .nav__actions {
