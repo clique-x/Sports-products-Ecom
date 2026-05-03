@@ -75,8 +75,6 @@ export const products = [
             '/images/products/ardilla-jointless/gallery-02.jpg',
             '/images/products/ardilla-jointless/gallery-03.jpg',
             '/images/products/ardilla-jointless/gallery-04.jpg',
-            '/images/products/ardilla-jointless/gallery-05.jpg',
-            '/images/products/ardilla-jointless/gallery-06.jpg',
             '/images/products/ardilla-jointless/gallery-07.jpg',
             '/images/products/ardilla-jointless/gallery-08.jpg'
         ],
