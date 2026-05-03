@@ -1,5 +1,5 @@
 .pd {
-    padding-top: var(--s-5);
+    padding-top: var(--s-7);
 }
 
 .pd-missing {
@@ -95,9 +95,7 @@
 
 .pd__stage-img {
     position: absolute;
-    inset: 0;
-    width: 100%;
-    height: 100%;
+    inset: 6%;
     object-fit: contain;
     display: block;
     will-change: opacity, transform;
