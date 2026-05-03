@@ -88,14 +88,19 @@
 .pd__stage {
     position: relative;
     aspect-ratio: 4 / 5;
-    background: var(--sky);
+    background: var(--bg-raised);
+    border: 1px solid var(--line);
     border-radius: var(--r-lg);
     overflow: hidden;
 }
 
 .pd__stage-img {
     position: absolute;
-    inset: 4%;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    padding: var(--s-4);
+    box-sizing: border-box;
     object-fit: contain;
     display: block;
     will-change: opacity, transform;
