@@ -193,7 +193,16 @@ const ProductDetail = () => {
                                             key={c.name}
                                             type="button"
                                             className={`pd__color-card ${activeColor === i ? 'is-active' : ''}`}
-                                            onClick={() => setActiveColor(activeColor === i ? null : i)}
+                                            onClick={() => {
+                                                if (activeColor === i) {
+                                                    setActiveColor(null)
+                                                } else {
+                                                    setActiveColor(i)
+                                                    if (!c.image && images.length > 0) {
+                                                        setActive(i % images.length)
+                                                    }
+                                                }
+                                            }}
                                             aria-label={c.name}
                                             aria-pressed={activeColor === i}
                                             title={c.name}
