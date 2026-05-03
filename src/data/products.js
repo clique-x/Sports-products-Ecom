@@ -40,8 +40,8 @@ export const products = [
             length: '675mm',
             balance: 'Head Heavy',
             flexibility: 'Medium',
-            frame: 'Hi-Modulus Graphite',
-            shaft: 'Carbon Fiber',
+            frame: 'Alloy',
+            shaft: 'Alloy',
             stringTension: '22-28 lbs',
             gripSize: 'G5'
         },
@@ -90,8 +90,8 @@ export const products = [
             length: '675mm',
             balance: 'Even Balance',
             flexibility: 'Stiff',
-            frame: 'One-Piece Jointless Carbon',
-            shaft: 'Ultra-High Modulus Graphite',
+            frame: 'One-Piece Jointless Alloy',
+            shaft: 'Alloy',
             stringTension: '24-30 lbs',
             gripSize: 'G5'
         },

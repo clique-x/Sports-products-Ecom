@@ -22,7 +22,7 @@ const testimonials = [
         name: 'Vikram Singh',
         title: 'Senior academy coach',
         avatar: 'VS',
-        text: 'Lightweight design means students train longer without wrist fatigue. Hi-modulus graphite frame is exceptionally durable for intensive academy use.',
+        text: 'Lightweight design means students train longer without wrist fatigue. Hi-modulus alloy frame is exceptionally durable for intensive academy use.',
     },
     {
         id: 4,

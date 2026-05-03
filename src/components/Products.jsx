@@ -28,7 +28,7 @@ const Products = () => {
                         viewport={{ once: true }}
                         transition={{ duration: 0.6, delay: 0.1 }}
                     >
-                        Tournament-grade carbon frames, jointless builds, championship pedigree.
+                        Tournament-grade alloy frames, jointless builds, championship pedigree.
                     </motion.p>
                 </div>
 

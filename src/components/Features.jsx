@@ -4,7 +4,7 @@ import './Features.css'
 
 const features = [
     { icon: Zap, title: 'Lightning speed', desc: 'Aerodynamic frame profile cuts through the air for faster swings and sharper reactions.' },
-    { icon: Shield, title: 'Durable by design', desc: 'Premium carbon fiber lay-up, tested to withstand thousands of tournament-level smashes.' },
+    { icon: Shield, title: 'Durable by design', desc: 'Premium alloy lay-up, tested to withstand thousands of tournament-level smashes.' },
     { icon: Target, title: 'Precision control', desc: 'Balanced sweet spot and tuned flex for accurate placement on every shot.' },
     { icon: Feather, title: 'Ultra lightweight', desc: 'Featherlight frames minimize fatigue over extended matches and academy sessions.' },
     { icon: Award, title: 'Pro-certified', desc: 'Used and endorsed by state and national players across the Indian circuit.' },
@@ -54,7 +54,7 @@ const Features = () => {
                     <div className="features__banner-copy">
                         <span className="eyebrow" style={{ color: 'rgba(255,255,255,0.65)' }}>Material science</span>
                         <h3 className="h2 features__banner-title">
-                            Carbon nano-tube construction —<br />35% stronger, 20% lighter.
+                            Alloy frame construction —<br />35% stronger, 20% lighter.
                         </h3>
                     </div>
                     <a
