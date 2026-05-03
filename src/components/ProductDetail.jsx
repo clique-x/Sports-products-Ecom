@@ -1,7 +1,7 @@
-import { useLayoutEffect, useState } from 'react'
+import { useEffect, useLayoutEffect, useState } from 'react'
 import { useParams, Link } from 'react-router-dom'
 import { motion, AnimatePresence } from 'framer-motion'
-import { ArrowLeft, Check, Shield, Truck, RotateCcw, ArrowUpRight, Star } from 'lucide-react'
+import { ArrowLeft, Check, Shield, Truck, RotateCcw, ArrowUpRight, Star, ZoomIn, X } from 'lucide-react'
 import { getProductBySlug } from '../data/products'
 import Testimonials from './Testimonials'
 import './ProductDetail.css'
@@ -11,6 +11,7 @@ const ProductDetail = () => {
     const product = getProductBySlug(slug)
     const [active, setActive] = useState(0)
     const [activeColor, setActiveColor] = useState(null)
+    const [zoomed, setZoomed] = useState(false)
 
     useLayoutEffect(() => {
         if (window.__lenis) {
@@ -19,6 +20,17 @@ const ProductDetail = () => {
             window.scrollTo(0, 0)
         }
     }, [slug])
+
+    useEffect(() => {
+        if (!zoomed) return
+        const onKey = (e) => e.key === 'Escape' && setZoomed(false)
+        window.addEventListener('keydown', onKey)
+        document.body.style.overflow = 'hidden'
+        return () => {
+            window.removeEventListener('keydown', onKey)
+            document.body.style.overflow = ''
+        }
+    }, [zoomed])
 
     if (!product) {
         return (
@@ -80,7 +92,50 @@ const ProductDetail = () => {
                                     transition={{ duration: 0.35, ease: [0.16, 1, 0.3, 1] }}
                                 />
                             </AnimatePresence>
+                            <button
+                                type="button"
+                                className="pd__zoom"
+                                onClick={() => setZoomed(true)}
+                                aria-label={`Zoom ${product.name} image`}
+                            >
+                                <ZoomIn size={17} strokeWidth={2.4} />
+                            </button>
                         </div>
+
+                        <AnimatePresence>
+                            {zoomed && (
+                                <motion.div
+                                    className="pd__lightbox"
+                                    initial={{ opacity: 0 }}
+                                    animate={{ opacity: 1 }}
+                                    exit={{ opacity: 0 }}
+                                    transition={{ duration: 0.28, ease: [0.16, 1, 0.3, 1] }}
+                                    onClick={() => setZoomed(false)}
+                                    role="dialog"
+                                    aria-label={`${product.name} — full image`}
+                                >
+                                    <button
+                                        type="button"
+                                        className="pd__lightbox-close"
+                                        onClick={() => setZoomed(false)}
+                                        aria-label="Close"
+                                    >
+                                        <X size={22} strokeWidth={2.4} />
+                                    </button>
+                                    <motion.img
+                                        src={stageSrc}
+                                        alt={product.name}
+                                        className="pd__lightbox-img"
+                                        initial={{ scale: 0.94, opacity: 0 }}
+                                        animate={{ scale: 1, opacity: 1 }}
+                                        exit={{ scale: 0.96, opacity: 0 }}
+                                        transition={{ duration: 0.42, ease: [0.16, 1, 0.3, 1] }}
+                                        onClick={(e) => e.stopPropagation()}
+                                        draggable="false"
+                                    />
+                                </motion.div>
+                            )}
+                        </AnimatePresence>
                         <div className="pd__thumbs">
                             {images.map((src, i) => (
                                 <button

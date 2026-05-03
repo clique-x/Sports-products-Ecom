@@ -87,7 +87,7 @@
 
 .pd__stage {
     position: relative;
-    aspect-ratio: 1 / 1;
+    aspect-ratio: 4 / 5;
     background: var(--sky);
     border-radius: var(--r-lg);
     overflow: hidden;
@@ -95,10 +95,98 @@
 
 .pd__stage-img {
     position: absolute;
-    inset: 6%;
+    inset: 4%;
     object-fit: contain;
     display: block;
     will-change: opacity, transform;
+}
+
+.pd__zoom {
+    position: absolute;
+    top: 16px;
+    right: 16px;
+    width: 42px;
+    height: 42px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 999px;
+    background: rgba(255, 255, 255, 0.94);
+    color: var(--ink);
+    border: 1px solid rgba(13, 13, 13, 0.06);
+    cursor: pointer;
+    padding: 0;
+    z-index: 3;
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    box-shadow: 0 8px 22px -10px rgba(0, 0, 0, 0.35);
+    transition:
+        transform 360ms cubic-bezier(0.16, 1, 0.3, 1),
+        background 260ms ease,
+        color 260ms ease;
+}
+
+.pd__zoom:hover,
+.pd__zoom:focus-visible {
+    transform: scale(1.08);
+    background: var(--orange);
+    color: #fff;
+    outline: none;
+}
+
+.pd__zoom:active {
+    transform: scale(0.96);
+}
+
+.pd__lightbox {
+    position: fixed;
+    inset: 0;
+    z-index: 1000;
+    background: rgba(0, 0, 0, 0.92);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: clamp(20px, 4vw, 60px);
+    cursor: zoom-out;
+}
+
+.pd__lightbox-img {
+    max-width: 100%;
+    max-height: 100%;
+    width: auto;
+    height: auto;
+    object-fit: contain;
+    user-select: none;
+    cursor: default;
+    border-radius: 8px;
+    box-shadow: 0 30px 80px -20px rgba(0, 0, 0, 0.6);
+}
+
+.pd__lightbox-close {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    width: 44px;
+    height: 44px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 999px;
+    background: rgba(255, 255, 255, 0.08);
+    color: #fff;
+    border: 1px solid rgba(255, 255, 255, 0.15);
+    cursor: pointer;
+    padding: 0;
+    transition: background 240ms ease, transform 240ms ease;
+}
+
+.pd__lightbox-close:hover,
+.pd__lightbox-close:focus-visible {
+    background: rgba(255, 255, 255, 0.2);
+    transform: scale(1.05);
+    outline: none;
 }
 
 .pd__badge {
