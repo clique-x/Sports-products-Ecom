@@ -79,10 +79,10 @@ export const products = [
             '/images/products/ardilla-jointless/gallery-08.jpg'
         ],
         colors: [
-            { name: 'White', swatch: '#FFFFFF' },
-            { name: 'Neon Green', swatch: '#39FF14' },
-            { name: 'Red', swatch: '#E53935' },
-            { name: 'Orange', swatch: '#FF7A00' }
+            { name: 'White', swatch: '#FFFFFF', image: '/images/products/ardilla-jointless/gallery-03.jpg' },
+            { name: 'Neon Green', swatch: '#39FF14', image: '/images/products/ardilla-jointless/gallery-04.jpg' },
+            { name: 'Red', swatch: '#E53935', image: '/images/products/ardilla-jointless/gallery-08.jpg' },
+            { name: 'Orange', swatch: '#FF7A00', image: '/images/products/ardilla-jointless/gallery-02.jpg' }
         ],
         description: 'Stop settling for the vibration and "give" of a traditional two-piece racket. Our jointless alloy construction eliminates the external T-joint, creating a sleek, unified frame that feels solid in your hand. By integrating the head and shaft into a single piece, we’ve significantly reduced torsion (twisting) during high-impact smashes, giving you the stability needed to direct the shuttle exactly where you want it. Built to endure the rigors of the learning process, this high-grade alloy frame is resilient enough to handle accidental floor scrapes and clashes without losing its shape. Combined with an Isometric head geometry, we’ve expanded the sweet spot to ensure that even off-center hits carry the power and depth you need to stay in the rally.',
         specifications: {
