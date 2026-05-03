@@ -81,7 +81,9 @@ export const products = [
             { name: 'Crimson Blaze', swatch: '#e53935', image: '/images/products/ardilla-jointless/colors/crimson-blaze.png' },
             { name: 'Neon Glacier', swatch: '#6ec8e6', image: '/images/products/ardilla-jointless/colors/neon-glacier.png' },
             { name: 'Rose Gold Glide', swatch: '#d4a78a', image: '/images/products/ardilla-jointless/colors/rose-gold-glide.png' },
-            { name: 'Purple Fury', swatch: '#5a2ea6', image: '/images/products/ardilla-jointless/colors/purple-fury.png' }
+            { name: 'Purple Fury', swatch: '#5a2ea6', image: '/images/products/ardilla-jointless/colors/purple-fury.png' },
+            { name: 'Solar Flare', swatch: '#f5b400', image: '/images/products/ardilla-jointless/hero-spotlight.jpg' },
+            { name: 'Phantom Onyx', swatch: '#1a1a1a', image: '/images/products/ardilla-jointless/hero-spotlight.jpg' }
         ],
         description: 'Stop settling for the vibration and "give" of a traditional two-piece racket. Our jointless alloy construction eliminates the external T-joint, creating a sleek, unified frame that feels solid in your hand. By integrating the head and shaft into a single piece, we’ve significantly reduced torsion (twisting) during high-impact smashes, giving you the stability needed to direct the shuttle exactly where you want it. Built to endure the rigors of the learning process, this high-grade alloy frame is resilient enough to handle accidental floor scrapes and clashes without losing its shape. Combined with an Isometric head geometry, we’ve expanded the sweet spot to ensure that even off-center hits carry the power and depth you need to stay in the rally.',
         specifications: {
