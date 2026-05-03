@@ -29,7 +29,10 @@ export const products = [
         colors: [
             { name: 'Velocity Blue', swatch: '#2e86de', image: '/images/products/ardilla/20260416_151349.jpg' },
             { name: 'Zenith Rose', swatch: '#e91e63', image: '/images/products/ardilla/20260416_151524.jpg' },
-            { name: 'Raptor Gold', swatch: '#f5c518', image: '/images/products/ardilla/20260416_151626.jpg' }
+            { name: 'Raptor Gold', swatch: '#f5c518', image: '/images/products/ardilla/20260416_151626.jpg' },
+            { name: 'Neon Glacier', swatch: '#6ec8e6' },
+            { name: 'Rose Gold Glide', swatch: '#d4a78a' },
+            { name: 'Purple Fury', swatch: '#5a2ea6' }
         ],
         description: 'Designed specifically for those who are starting their journey. Picking up the racket for the first time, you need gear that grows with you. Our beginner series is built for durability. The integrated joint technology provides a stable feel and durability for protection from clashes.',
         specifications: {
