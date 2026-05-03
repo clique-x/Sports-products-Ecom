@@ -69,7 +69,6 @@ export const products = [
             portrait: '/images/products/ardilla-jointless/hero-spotlight.jpg',
         },
         images: [
-            '/images/products/ardilla-jointless/gallery-01.jpg',
             '/images/products/ardilla-jointless/gallery-02.jpg',
             '/images/products/ardilla-jointless/gallery-03.jpg',
             '/images/products/ardilla-jointless/gallery-04.jpg',
