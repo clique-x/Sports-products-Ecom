@@ -87,7 +87,7 @@
 
 .pd__stage {
     position: relative;
-    aspect-ratio: 4 / 5;
+    aspect-ratio: 1 / 1;
     background: var(--bg-raised);
     border: 1px solid var(--line);
     border-radius: var(--r-lg);
